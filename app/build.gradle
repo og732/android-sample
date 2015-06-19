@@ -53,6 +53,8 @@ def initCrashlyticsPropertiesIfNeeded() {
         ant.propertyfile(file: "crashlytics.properties", comment: commentMessage) {
             entry(key: "apiSecret", value: crashlyticsApiSecret)
             entry(key: "apiKey", value: crashlyticsApiKey)
+            entry(key: "ext.betaDistributionGroiupAliases", value: "SampleGroup")
+            entry(key: "ext.betaDistributionReleaseNotesFilePath", value: "release_notes.txt")
         }
     }
 }
