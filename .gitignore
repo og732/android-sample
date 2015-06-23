@@ -5,6 +5,9 @@
 .DS_Store
 /build
 /captures
+app/conf/
+*.apk
+*.bk
 
 # Crashlytics plugin
 com_crashlytics_export_strings.xml
