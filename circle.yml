@@ -3,7 +3,7 @@ general:
     only:
       - master
   artifacts:
-    - "app/build/outputs/apk/app-release-unsigned.apk"
+    - "app/build/outputs/apk/app-debug.apk"
 machine:
   java:
     version: openjdk7
@@ -20,3 +20,8 @@ deployment:
     branch: master
     commands:
       - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
+  beta:
+    branch: beta
+    commands:
+      - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
+
