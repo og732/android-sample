@@ -2,8 +2,9 @@ general:
   branches:
     only:
       - master
+      - beta
   artifacts:
-    - "app/build/outputs/apk/app-debug.apk"
+    - "app/build/outputs/apk/"
 machine:
   java:
     version: openjdk7
@@ -11,6 +12,7 @@ machine:
     ANDROID_HOME: /usr/local/android-sdk-linux
 dependencies:
   override:
+    - sudo apt-get install jq
     - echo y | android update sdk --no-ui --filter "android-21,build-tools-21.1.2"
 test:
   override:
