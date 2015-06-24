@@ -9,6 +9,8 @@
 # Settings
 #
 
+export LANG=ja_JP.UTF-8
+
 VERSION=`cat app/build.gradle | grep versionName | awk '{print $2}' | sed -e 's/"//g'`
 OWNER=$CIRCLE_PROJECT_USERNAME
 REPO=$CIRCLE_PROJECT_REPONAME
