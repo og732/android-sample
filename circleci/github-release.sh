@@ -38,6 +38,7 @@ INPUT="
 #
 
 function create_release() {
+    echo "run create release"
     RESULT=$(curl --fail -X POST https://api.github.com/repos/${OWNER}/${REPO}/releases \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${GITHUB_TOKEN}" \
@@ -48,6 +49,7 @@ function create_release() {
 }
 
 function upload_assets() {
+    echo "run upload release"
     curl --fail -X POST https://uploads.github.com/repos/${OWNER}/${REPO}/releases/${RELEASE_ID}/assets?name=${ARCHIVE_NAME} \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${GITHUB_TOKEN}" \
