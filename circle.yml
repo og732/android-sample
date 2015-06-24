@@ -22,8 +22,10 @@ deployment:
     branch: master
     commands:
       - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
+      - circleci/github-release.sh
   beta:
     branch: beta
     commands:
       - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
+      - circleci/github-release.sh
 
