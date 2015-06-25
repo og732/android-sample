@@ -8,8 +8,10 @@
 app/conf/
 *.apk
 *.bk
+circleci/github-release-local.sh
 
 # Crashlytics plugin
 com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
+
