@@ -18,7 +18,7 @@ RELEASE_NOTE=RELEASE_NOTE/${VERSION}-note.md
 RELEASE_NOTE_TXT="$VERSION release"
 OUTPUT_DIR=app/build/outputs/
 ARCHIVE=assets.zip
-# GitHub Token$B$O(BCircleCI$B$N4D6-JQ?t$K@_Dj(B
+# GitHub TokenはCircleCIで設定
 #GITHUB_TOKEN=
 
 if [ -f $RELEASE_NOTE ]; then
@@ -33,6 +33,9 @@ INPUT="
     \"draft\": false,
     \"prerelease\": false
 }"
+
+echo $INPUT
+exit
 
 
 #
