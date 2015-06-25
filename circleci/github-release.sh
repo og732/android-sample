@@ -11,7 +11,7 @@
 
 export LANG=ja_JP.UTF-8
 
-VERSION=`cat app/build.gradle | grep versionName | awk '{print $2}' | sed -e 's/"//g'`
+VERSION=`cat app/build.gradle | egrep 'versionName\s+"[^"]+"' | awk '{print $2}' | sed -e 's/"//g'`
 OWNER=$CIRCLE_PROJECT_USERNAME
 REPO=$CIRCLE_PROJECT_REPONAME
 RELEASE_NOTE=RELEASE_NOTE/${VERSION}-note.md
