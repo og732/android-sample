@@ -31,6 +31,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            File releaseNotes = file('../RELEASE_NOTE/' + android.defaultConfig.versionName + '-note.md')
             if ( releaseNotes.exists() ) {
                 ext.betaDistributionReleaseNotesFilePath = releaseNotes
             }
