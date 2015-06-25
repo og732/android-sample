@@ -27,5 +27,4 @@ deployment:
     branch: beta
     commands:
       - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
-      - circleci/github-release.sh
 

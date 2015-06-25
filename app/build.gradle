@@ -24,13 +24,18 @@ android {
         minSdkVersion 22
         targetSdkVersion 22
         versionCode 1
-        versionName "1.1.13"
+        versionName "1.1.14"
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            File releaseNotes = file('../RELEASE_NOTE/' + android.defaultConfig.versionName + '-note.md')
+            if ( releaseNotes.exists() ) {
+                ext.betaDistributionReleaseNotesFilePath = releaseNotes
+            }
+            ext.betaDistributionGroupAliases = "samplegroup"
         }
         debug {
             debuggable true
