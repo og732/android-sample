@@ -39,24 +39,33 @@ INPUT="
 # function
 #
 
+function result_check() {
+    if [ "$1" == "" ]; then
+        echo "[ERROR] $2"
+        exit 1
+    fi
+}
+
 function create_release() {
     echo "run create release"
-    RESULT=$(curl --fail -X POST https://api.github.com/repos/${OWNER}/${REPO}/releases \
+    RESULT=$(curl -f -s -S -X POST https://api.github.com/repos/${OWNER}/${REPO}/releases \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${GITHUB_TOKEN}" \
         -H "Content-Type: application/json" \
         -d "${INPUT}")
 
+    result_check "$RESULT" "failed create release"
     RELEASE_ID=`echo $RESULT | jq ".id"`
 }
 
 function upload_assets() {
-    echo "run upload release"
-    curl --fail -X POST https://uploads.github.com/repos/${OWNER}/${REPO}/releases/${RELEASE_ID}/assets?name=${ARCHIVE_NAME} \
+    echo "run upload assets"
+    RESULT=$(curl -f -s -S -X POST https://uploads.github.com/repos/${OWNER}/${REPO}/releases/${RELEASE_ID}/assets?name=${ARCHIVE_NAME} \
         -H "Accept: application/vnd.github.v3+json" \
         -H "Authorization: token ${GITHUB_TOKEN}" \
         -H "Content-Type: ${CONTENT_TYPE}" \
-        --data-binary @"${ARCHIVE}"
+        --data-binary @"${ARCHIVE}")
+    result_check "$RESULT" "failed upload assets"
 }
 
 #
