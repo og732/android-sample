@@ -24,7 +24,7 @@ android {
         minSdkVersion 22
         targetSdkVersion 22
         versionCode 1
-        versionName "1.1.12"
+        versionName "1.1.13"
     }
 
     buildTypes {
@@ -34,7 +34,10 @@ android {
         }
         debug {
             debuggable true
-            ext.betaDistributionReleaseNotes = "release"
+            File releaseNotes = file('../RELEASE_NOTE/' + android.defaultConfig.versionName + '-note.md')
+            if ( releaseNotes.exists() ) {
+                ext.betaDistributionReleaseNotesFilePath = releaseNotes
+            }
             ext.betaDistributionGroupAliases = "samplegroup"
         }
     }
@@ -59,8 +62,6 @@ def initCrashlyticsPropertiesIfNeeded() {
         ant.propertyfile(file: "crashlytics.properties", comment: commentMessage) {
             entry(key: "apiSecret", value: crashlyticsApiSecret)
             entry(key: "apiKey", value: crashlyticsApiKey)
-            //entry(key: "ext.betaDistributionGroupAliases", value: "samplegroup")
-            //entry(key: "ext.betaDistributionReleaseNotes", value: "release")
         }
     }
 }
