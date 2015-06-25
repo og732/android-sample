@@ -21,7 +21,7 @@ ARCHIVE=assets.zip
 # GitHub TokenはCircleCIで設定
 #GITHUB_TOKEN=
 
-if [ -f $RELEASE_NOTE ]; then
+if [ -f "$RELEASE_NOTE" ]; then
     RELEASE_NOTE_TXT=`cat $RELEASE_NOTE | awk -F\n -v ORS="\\\\\\n" '{print}' | sed 's|\\\\n$||'`
 fi
 
