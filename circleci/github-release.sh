@@ -34,9 +34,6 @@ INPUT="
     \"prerelease\": false
 }"
 
-echo $INPUT
-exit
-
 
 #
 # function
