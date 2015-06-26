@@ -19,12 +19,12 @@ android {
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
 
-    defaultConfig {
-        applicationId "com.example.mogawa.itunesmusicsearch"
-        minSdkVersion 22
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.1.14"
+    defaultconfig {
+        applicationid "com.example.mogawa.itunesmusicsearch"
+        minsdkversion 22
+        targetsdkversion 22
+        versioncode 1
+        versionname "1.1.14"
     }
 
     buildTypes {
