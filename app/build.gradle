@@ -24,7 +24,7 @@ android {
         minsdkversion 22
         targetsdkversion 22
         versioncode 1
-        versionname "1.1.14"
+        versionname "1.1.15"
     }
 
     buildTypes {
