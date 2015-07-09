@@ -56,6 +56,7 @@ afterEvaluate {
 
 def getReleaseNotes() {
     def appVersion = android.defaultConfig.versionName
+    appVersion = appVersion.replaceFirst(/(.)-\d+/){it[1]}
     def releaseNotes = 'Release version: ' + appVersion
     File releaseNotesFile = file('../RELEASE_NOTE/' + appVersion + '-note.md')
 

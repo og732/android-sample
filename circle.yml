@@ -7,7 +7,7 @@ general:
     - "app/build/outputs/apk/"
 machine:
   java:
-    version: openjdk7
+    version: oraclejdk7
   environment:
     ANDROID_HOME: /usr/local/android-sdk-linux
 dependencies:
@@ -21,7 +21,7 @@ deployment:
   master:
     branch: master
     commands:
-      - ./gradlew assembleDebug crashlyticsUploadDistributionDebug
+      - ./gradlew assembleDebug
       - circleci/github-release.sh
   beta:
     branch: beta
