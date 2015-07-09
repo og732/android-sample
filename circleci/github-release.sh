@@ -11,13 +11,14 @@
 
 export LANG=ja_JP.UTF-8
 
-VERSION=`cat app/build.gradle | egrep 'versionName\s+"[^"]+"' | awk '{print $2}' | sed -e 's/"//g'`
+#VERSION=`cat app/build.gradle | egrep 'versionName\s+"[^"]+"' | awk '{print $2}' | sed -e 's/"//g'`
+VERSION=`cat app/build.gradle | egrep 'versionName\s+"[^"]+"' | awk '{print $2}' | sed -e 's/"//g' | sed -e 's/-[0-9]\+//g'`
 OWNER=$CIRCLE_PROJECT_USERNAME
 REPO=$CIRCLE_PROJECT_REPONAME
 RELEASE_NOTE=RELEASE_NOTE/${VERSION}-note.md
 RELEASE_NOTE_TXT="$VERSION release"
 OUTPUT_DIR=app/build/outputs/
-ARCHIVE=assets.zip
+ARCHIVE=${VERSION}.zip
 # GitHub TokenはCircleCIで設定
 #GITHUB_TOKEN=
 
@@ -72,7 +73,7 @@ function upload_assets() {
 # Main
 #
 
-zip -r assets.zip $OUTPUT_DIR
+zip -r ${ARCHIVE} ${OUTPUT_DIR}
 
 ARCHIVE_NAME=$(basename ${ARCHIVE})
 CONTENT_TYPE=$(file --mime-type -b ${ARCHIVE})
